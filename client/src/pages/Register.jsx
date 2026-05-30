@@ -1,7 +1,13 @@
 import { PcCase } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Eye, EyeOff } from 'lucide-react'
 
 function Register() {
+
+    const [showPassword, setShowPassword] = useState(false)
+    const [showConfirm, setShowConfirm] = useState(false)
+
     return (
         <div className="auth-page">
             <div className="auth-card">
@@ -82,6 +88,7 @@ function Register() {
                                 placeholder="Tu nombre"
                             />
                         </div>
+
                         <div className="auth-form-group">
                             <label className="auth-label">Apellido</label>
                             <input
@@ -91,6 +98,7 @@ function Register() {
                             />
                         </div>
                     </div>
+
                     <div className="auth-form-group">
                         <label className="auth-label">Correo electrónico</label>
                         <input
@@ -99,21 +107,41 @@ function Register() {
                             placeholder="tu@correo.com"
                         />
                     </div>
+
                     <div className="auth-form-group">
                         <label className="auth-label">Contraseña</label>
-                        <input
-                            className="auth-input"
-                            type="password"
-                            placeholder="••••••••"
-                        />
+                        <div className="auth-input-wrap">
+                            <input
+                                className="auth-input"
+                                type={showPassword ? 'text' : 'password'}
+                                placeholder="••••••••"
+                            />
+                            <button
+                                className="auth-eye"
+                                onClick={() => setShowPassword(!showPassword)}
+                                type="button"
+                            >
+                                {showPassword ? <EyeOff size={16} strokeWidth={1.5} color="var(--text-light)" /> : <Eye size={16} strokeWidth={1.5} color="var(--text-light)" />}
+                            </button>
+                        </div>
                     </div>
+
                     <div className="auth-form-group">
                         <label className="auth-label">Confirmar contraseña</label>
-                        <input
-                            className="auth-input"
-                            type="password"
-                            placeholder="••••••••"
-                        />
+                        <div className="auth-input-wrap">
+                            <input
+                                className="auth-input"
+                                type={showConfirm ? 'text' : 'password'}
+                                placeholder="••••••••"
+                            />
+                            <button
+                                className="auth-eye"
+                                onClick={() => setShowConfirm(!showConfirm)}
+                                type="button"
+                            >
+                                {showConfirm ? <EyeOff size={16} strokeWidth={1.5} color="var(--text-light)" /> : <Eye size={16} strokeWidth={1.5} color="var(--text-light)" />}
+                            </button>
+                        </div>
                     </div>
                     
                     <button className="auth-submit">Crear cuenta</button>

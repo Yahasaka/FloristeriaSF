@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Eye, EyeOff } from 'lucide-react'
 
 function Login() {
+
+    const [showPassword,setShowPassword] = useState(false)
     return (
         <div className="auth-page">
             <div className="auth-card">
@@ -9,17 +13,46 @@ function Login() {
                     <p className="auth-brand">
                         San <em>Francisco</em>
                     </p>
-                    <h1 className="auth-quote">
-                        Flores para cada <em>momento especial</em>
-                    </h1>
-                    <p className="auth-quote-sub">
-                        Iniciá sesión y accedé a tu historial de pedidos, favoritos y más.
-                    </p>
-                    <div className="auth-flowers">
-                        <span className="auth-flower">🌸</span>
-                        <span className="auth-flower">🌹</span>
-                        <span className="auth-flower">🌻</span>
+
+                    <div className="auth-left-content">
+                        <div className="auth-ornament">
+                            <div className="auth-ornament-line" />
+                            <div className="auth-ornament-diamond" />
+                            <div className="auth-ornament-line" />
+                        </div>
+
+                        <h1 className="auth-quote">
+                            Flores para cada <span>momento especial</span>
+                        </h1>
+
+                        <p className="auth-quote-sub">
+                            Iniciá sesión y accedé a tu historial de pedidos, favoritos y mucho más.
+                        </p>
+
+                        <div className="auth-divider-deco">
+                            <div className="auth-divider-line" />
+                            <span className="auth-gem">✦</span>
+                            <div className="auth-divider-line" />
+                        </div>
+
+                        <p className="auth-tagline">Floristeria artesanal · Cartago</p>
                     </div>
+
+                    <Link to="/" className="auth-back">
+                        <svg
+                            width="13" height="13"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        >
+                            <path d="M19 12H5" />
+                            <path d="M12 191-7-7 7-7" />
+                        </svg>
+                        Volver al inicio
+                    </Link>
                 </div>
 
                 <div className="auth-right">
@@ -37,11 +70,20 @@ function Login() {
 
                 <div className="auth-form-group">
                     <label className="auth-label">Contraseña</label>
-                    <input
-                        className="auth-input"
-                        type="password"
-                        placeholder="••••••••"
-                    />
+                    <div className="auth-input-wrap">
+                        <input
+                            className="auth-input"
+                            type={showPassword ? 'text' : 'password'}
+                            placeholder="••••••••"
+                        />
+                        <button
+                            className="auth-eye"
+                            onClick={() =>setShowPassword(!showPassword)}
+                            type="button"
+                        >
+                            {showPassword ? <EyeOff size={16} strokeWidth={1.5} color="var(--text-light)" /> : <Eye size={16} strokeWidth={1.5} color="var(--text-light)" />}
+                        </button>
+                    </div>
                 </div>
 
                 <p className="auth-forgot">¿Olvidaste tu contraseña?</p>
