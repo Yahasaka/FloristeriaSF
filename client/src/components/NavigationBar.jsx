@@ -83,6 +83,12 @@ function NavigationBar() {
                                         </div>
                                         <button className="nav-dropdown__item" onClick={() => {
                                             setIsOpen(false)
+                                            navigate('/mi-cuenta')
+                                        }}>
+                                            Mi perfil
+                                        </button>
+                                        <button className="nav-dropdown__item" onClick={() => {
+                                            setIsOpen(false)
                                             navigate('/login')
                                         }}>
                                             Iniciar sesión
