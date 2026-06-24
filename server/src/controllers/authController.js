@@ -84,4 +84,26 @@ async function login (req, res) {
     }
 }
 
-module.exports = { register, login }
+async function perfil (req, res) {
+
+    try {
+
+        const resultado = await pool.query (
+            'Select id, nombre, apellido, correo, rol, telefono from usuarios where id = $1',
+            [req.usuario.id]
+        )
+
+        if (resultado.rows.length === 0) {
+            return res.status(404).json({ error: 'Usuario no encontrado' })
+        }
+
+        res.json({ usuario: resultado.rows[0] })
+
+    } catch (error) {
+        console.error( error )
+        res.status(500).json({ error: 'Error al obtener el perfil' })
+
+    }
+}
+
+module.exports = { register, login, perfil }
