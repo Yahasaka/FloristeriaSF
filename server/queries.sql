@@ -63,3 +63,4 @@ create table direcciones (
 
 
 select * from usuarios
+UPDATE usuarios SET rol = 'admin' WHERE correo = 'mjimenez9@gmail.com';

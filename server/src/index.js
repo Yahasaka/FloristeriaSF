@@ -5,6 +5,7 @@ require ('dotenv').config()
 const pool = require ('./config/db')
 
 const authRoutes = require ('./routes/authRoutes')
+const productRoutes = require ('./routes/productRoutes')
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -26,6 +27,7 @@ app.get('/test-db', async (req, res) => {
 })
 
 app.use('/api/auth', authRoutes)
+app.use('/api/productos', productRoutes)
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`)
